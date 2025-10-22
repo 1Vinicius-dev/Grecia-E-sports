@@ -106,14 +106,14 @@ nav a:hover{
     justify-content: center;
     width: 690px;
     z-index: -1;
-    
+    right: 79px;
 }
 
 .hero-text {
   position: absolute;
-  width: 800px ;
+  width: 700px ;
   top: 48%;        
-  left: 50%;       
+  left: 46%;       
   transform: translateY(-50%); 
   color: white;
   font-weight: bold;
@@ -134,9 +134,9 @@ button{
     cursor: pointer;
     letter-spacing: 2.5px;
     transition: 0.3s ease;
-    top: 68%;
+    top: 65%;
     position: absolute;
-    left: 50.3%;
+    left: 46.3%;
     transform: scale(1);
 }
 
@@ -153,21 +153,21 @@ button:active{
     border: none;
     position: absolute;
     top: 70%;
-    left: 97%;
+    left: 96.5%;
     width: 42px;  
 }
 
 .Twitter{
     position: absolute;
     top: 78%;
-    left: 97%;
+    left: 96.5%;
     width: 42px;
 }
 
 .youtube{
     position: absolute;
     top: 86%;
-    left: 97%;
+    left: 96.5%;
     width: 42px;
 }
 
