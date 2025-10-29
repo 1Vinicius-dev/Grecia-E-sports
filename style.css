@@ -1,17 +1,24 @@
 *{
     margin: 0;
     padding: 0;
+    border: 0;
+    outline: 0;
     box-sizing: border-box;
     font-family: 'Geologic', sans-serif;
 }
 
 body{
     background-color: #000346;
-    color: white;
-    overflow: hidden;
+  
+    overflow: auto;
 }
 
 /*cabeçalho*/
+
+.navli{
+      background-color: #000346;
+    
+}
 header{
     background-color: #B3ADB1;
     height: 100px;
@@ -20,6 +27,7 @@ header{
     justify-content: space-between;
     padding: 0 20px;
     margin-left: 45%;
+    background-color: #000346;
 }
 
 .logo{
@@ -123,7 +131,7 @@ nav a:hover{
 
 /*botão*/
 
-button{
+#button1{
     background-color: #AB7F32;
     color: white;
     border: none;
@@ -171,3 +179,191 @@ button:active{
     width: 42px;
 }
 
+.sobre {
+  position: relative;
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+    /* Cor de fundo adicionada para criar a "caixa" da segunda section. Ajuste o rgba para mudar a cor/opacity. */
+    background-color:#B3ADB1 ;
+     /* templo grego */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  overflow: hidden;
+}
+
+/* Overlay escuro para destacar o conteúdo sobre a imagem de fundo */
+.sobre::before{
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+}
+
+/* Caixa branca que representa o "segundo quadrante" - aplica-se ao texto dentro da seção */
+
+  
+
+/* Ajustes para a imagem do título (à esquerda do cartão) */
+.sobre .titulo-img{
+    position: relative;
+    z-index: 2;
+    left: 40px;
+    top: 0;
+    width: 260px;
+}
+
+/* Ajuste do título grande "SOBRE" para não sobrepor o cartão */
+#sobre{
+        position: absolute;
+        left: 60px;
+        top: 40px;
+        font-size: 64px;
+        letter-spacing: 8px;
+        color: #ffffff;
+        z-index: 2;
+}
+#sobre{
+    position: absolute;
+    display: flex;
+    left: 150px;
+    top: 200px;
+     font-size: 180px;
+     letter-spacing: 10px;
+     color: #000346;
+}
+/* IMAGEM SOBRE (à esquerda, acima do centro) */
+.titulo-img {
+  position: absolute;
+  left: 400px;
+  top: 44%;
+  transform: translateY(-50%);
+  width: 280px;
+}
+
+/* TEXTO AO LADO DIREITO */
+.texto {
+  width: 500px;
+  margin-right: 350px;
+  font-weight: 600;
+  line-height: 1.4;
+  font-size: 15px;
+  z-index: 2;
+}
+
+.subtitulo {
+  color: #000346;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.texto strong {
+  color: #AC843F;
+  font-weight: 800;
+}
+
+#ctr{
+     position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+       width: 900px;
+    height: 800px;
+}
+#pilastra1{
+     position: absolute;
+      top: 10%;
+       width: 150px;
+       left: 60px
+}
+#pilastra2{
+     position: absolute;
+      top: 10%;
+       width: 150px;
+       right: 100px;
+}
+
+#jogos{
+    position: absolute;
+     left: 170px;
+font-size: 120px;
+color: white;
+}
+#valorant{
+    position: absolute;
+    top: 2100px;
+   left: 120px;
+    width: 400px;
+    height: auto;
+}
+#embreve1{
+    position: absolute;
+    top: 2100px;
+   left: 750px;
+    width: 400px;
+    height: auto;
+}
+#embreve2{
+    position: absolute;
+    top: 2100px;
+   left: 1400px;
+    width: 400px;
+    height: auto;
+}
+#linha{
+   
+    position: absolute;
+    left: 700px;
+    top: 1960px;
+    width: 1100px;
+
+}
+#partidas{
+    position: absolute;
+     left: 170px;
+font-size: 120px;
+color: white;
+top: 2650px;
+}
+#partida{
+    position: absolute;
+align-items: center;
+top: 2700px;
+ width: 1980px;
+    height: auto;
+}
+#btnpartidas{
+  
+    top: 3500px;
+   left: 800px;
+ font-size: 30px;
+ border-radius: 5px;
+ cursor: pointer;
+  margin-top: 30px;
+position: absolute;
+  display: inline-block;
+  padding: 14px 40px;
+  border: 2px solid white;
+  
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+    
+}
+
+button:hover {
+  background-color: #000346;
+}
+
+button:active{
+    transform: scale(0.9);
+}
