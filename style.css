@@ -16,18 +16,17 @@ body{
 /*cabeçalho*/
 
 .navli{
-      background-color: #000346;
+      background-color: #B3ADB1;
     
 }
 header{
-    background-color: #B3ADB1;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     margin-left: 45%;
-    background-color: #000346;
+    background-color: #B3ADB1;
 }
 
 .logo{
@@ -156,6 +155,9 @@ button:active{
     transform: scale(0.9);
 }
 
+
+
+
 /*socials*/ 
 .instagram{
     border: none;
@@ -185,22 +187,11 @@ button:active{
   display: flex;
   align-items: center;
   justify-content: flex-end;
-    /* Cor de fundo adicionada para criar a "caixa" da segunda section. Ajuste o rgba para mudar a cor/opacity. */
-    background-color:#B3ADB1 ;
-     /* templo grego */
+  background-color: #B3ADB1;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 80%;
   overflow: hidden;
-}
-
-/* Overlay escuro para destacar o conteúdo sobre a imagem de fundo */
-.sobre::before{
-    content: "";
-    position: absolute;
-    inset: 0; /* top:0; right:0; bottom:0; left:0 */
-    background: rgba(0,0,0,0.35);
-    z-index: 1;
 }
 
 /* Caixa branca que representa o "segundo quadrante" - aplica-se ao texto dentro da seção */
@@ -332,15 +323,18 @@ top: 2650px;
 }
 #partida{
     position: absolute;
-align-items: center;
-top: 2700px;
- width: 1980px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2700px;
+    width: 1980px;
     height: auto;
+    display: flex;
+    justify-content: center;
 }
 #btnpartidas{
   
     top: 3500px;
-   left: 800px;
+   left: 740px;
  font-size: 30px;
  border-radius: 5px;
  cursor: pointer;
@@ -360,10 +354,31 @@ position: absolute;
     
 }
 
-button:hover {
+#button:hover {
   background-color: #000346;
 }
 
-button:active{
+#button:active{
     transform: scale(0.9);
+}
+
+/* Estilo para o título da loja que fica abaixo do botão de partidas */
+#loja{
+    
+    position: absolute;
+    margin-top: 1850px;
+    color: #ffffff; /* ajusta conforme necessário */
+    font-size: 120px;
+    letter-spacing: 2px;
+    z-index: 2;
+    left: 170px;
+}
+#textloja {
+    position: absolute;
+    margin-top: 2000px;
+    color: #ffffff; /* ajusta conforme necessário */
+    letter-spacing: 2px;
+    font-size: 30px;
+    z-index: 2;
+    left: 170px;
 }
