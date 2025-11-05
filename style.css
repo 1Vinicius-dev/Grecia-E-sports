@@ -15,10 +15,13 @@ body{
 
 /*cabeçalho*/
 
+<<<<<<< HEAD
 .navli{
       background-color: #B3ADB1;
     
 }
+=======
+>>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
 header{
     height: 100px;
     display: flex;
@@ -26,7 +29,11 @@ header{
     justify-content: space-between;
     padding: 0 20px;
     margin-left: 45%;
+<<<<<<< HEAD
     background-color: #B3ADB1;
+=======
+    
+>>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
 }
 
 .logo{
@@ -140,7 +147,7 @@ nav a:hover{
     font-size: 26px;
     cursor: pointer;
     letter-spacing: 2.5px;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
     top: 65%;
     position: absolute;
     left: 46.3%;
@@ -196,52 +203,24 @@ button:active{
 
 /* Caixa branca que representa o "segundo quadrante" - aplica-se ao texto dentro da seção */
 
-  
 
-/* Ajustes para a imagem do título (à esquerda do cartão) */
-.sobre .titulo-img{
-    position: relative;
-    z-index: 2;
-    left: 40px;
-    top: 0;
-    width: 260px;
-}
-
-/* Ajuste do título grande "SOBRE" para não sobrepor o cartão */
-#sobre{
-        position: absolute;
-        left: 60px;
-        top: 40px;
-        font-size: 64px;
-        letter-spacing: 8px;
-        color: #ffffff;
-        z-index: 2;
-}
-#sobre{
-    position: absolute;
-    display: flex;
-    left: 150px;
-    top: 200px;
-     font-size: 180px;
-     letter-spacing: 10px;
-     color: #000346;
-}
 /* IMAGEM SOBRE (à esquerda, acima do centro) */
 .titulo-img {
   position: absolute;
-  left: 400px;
+  left: 200px;
   top: 44%;
   transform: translateY(-50%);
-  width: 280px;
+  width: 500px;
 }
 
 /* TEXTO AO LADO DIREITO */
 .texto {
-  width: 500px;
-  margin-right: 350px;
-  font-weight: 600;
+  color: #000346;
+  width: 570px;
+  margin-right: 300px;
+  font-weight: 700;
   line-height: 1.4;
-  font-size: 15px;
+  font-size: 20px;
   z-index: 2;
 }
 
@@ -249,12 +228,12 @@ button:active{
   color: #000346;
   font-weight: 800;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
 .texto strong {
-  color: #AC843F;
+  color: #AB7F32;
   font-weight: 800;
 }
 
@@ -314,6 +293,12 @@ color: white;
     width: 1100px;
 
 }
+#linha-2{
+    position: absolute;
+    left: 900px;
+    top: 2723px;
+    width: 900px;
+}
 #partidas{
     position: absolute;
      left: 170px;
@@ -331,18 +316,26 @@ top: 2650px;
     display: flex;
     justify-content: center;
 }
+
 #btnpartidas{
   
+<<<<<<< HEAD
     top: 3500px;
    left: 740px;
  font-size: 30px;
  border-radius: 5px;
  cursor: pointer;
+=======
+  top: 3500px;
+  left: 800px;
+  font-size: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+>>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
   margin-top: 30px;
-position: absolute;
+  position: absolute;
   display: inline-block;
   padding: 14px 40px;
-  border: 2px solid white;
   
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
@@ -354,8 +347,13 @@ position: absolute;
     
 }
 
+<<<<<<< HEAD
 #button:hover {
   background-color: #000346;
+=======
+button:hover {
+  background-color: #B3ADB1;
+>>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
 }
 
 #button:active{
