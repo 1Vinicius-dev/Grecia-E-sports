@@ -14,14 +14,10 @@ body{
 }
 
 /*cabeçalho*/
-
-<<<<<<< HEAD
 .navli{
       background-color: #B3ADB1;
     
 }
-=======
->>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
 header{
     height: 100px;
     display: flex;
@@ -29,11 +25,8 @@ header{
     justify-content: space-between;
     padding: 0 20px;
     margin-left: 45%;
-<<<<<<< HEAD
+
     background-color: #B3ADB1;
-=======
-    
->>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
 }
 
 .logo{
@@ -294,19 +287,25 @@ color: white;
 
 }
 #linha-2{
-    position: absolute;
-    left: 900px;
-    top: 2723px;
-    width: 900px;
+  position: absolute;
+  left: 900px;
+  top: 2723px;
+  width: 900px;
 }
 #partidas{
-    position: absolute;
-     left: 170px;
-font-size: 120px;
-color: white;
-top: 2650px;
+  position: absolute;
+  left: 170px;
+  font-size: 120px;
+  color: white;
+  top: 2650px;
 }
 #partida{
+  position: absolute;
+  align-items: center;
+  top: 2700px;
+  width: 1980px;
+  height: auto;
+
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -315,49 +314,179 @@ top: 2650px;
     height: auto;
     display: flex;
     justify-content: center;
+
 }
 
 #btnpartidas{
-  
-<<<<<<< HEAD
+
     top: 3500px;
    left: 740px;
  font-size: 30px;
  border-radius: 5px;
  cursor: pointer;
-=======
+
   top: 3500px;
   left: 800px;
   font-size: 30px;
   border-radius: 5px;
   cursor: pointer;
->>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
+
   margin-top: 30px;
   position: absolute;
   display: inline-block;
   padding: 14px 40px;
   
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Geologic', sans-serif;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.3px;
   text-transform: uppercase;
   border-radius: 5px;
   transition: all 0.3s ease;
     
 }
-
-<<<<<<< HEAD
 #button:hover {
   background-color: #000346;
-=======
+}
 button:hover {
   background-color: #B3ADB1;
->>>>>>> 59df9e8b47933f7d70ca2fe39eb0a8e290956cfa
+
 }
 
 #button:active{
     transform: scale(0.9);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  header {
+    margin-left: 0;
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    margin: 15px 0;
+  }
+
+  .logo {
+    justify-content: center;
+    left: 0;
+  }
+
+  .logo img {
+    padding-left: 0;
+  }
+
+  /* Hero section */
+  .hero {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+    padding: 40px 10px;
+  }
+
+  .hero-left, .hero-right {
+    width: 100%;
+    padding: 0;
+    align-items: center;
+  }
+
+  .hero-text {
+    position: static;
+    transform: none;
+    width: 90%;
+    font-size: 1.8rem;
+    margin: 20px auto;
+  }
+
+  #button1 {
+    position: static;
+    transform: none;
+    margin: 30px auto;
+    padding: 15px 40px;
+    font-size: 20px;
+    display: block;
+  }
+
+  /* Ícones sociais */
+  .instagram, .Twitter, .youtube {
+    position: static;
+    width: 35px;
+    margin: 10px;
+  }
+
+  /* Seção "sobre" */
+  .sobre {
+    flex-direction: column;
+    height: auto;
+    padding: 60px 20px;
+    background-size: cover;
+  }
+
+  .titulo-img {
+    position: static;
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 30px;
+  }
+
+  .texto {
+    position: static;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* Sessão jogos */
+  #jogos, #partidas {
+    position: static;
+    text-align: center;
+    font-size: 60px;
+    margin-top: 50px;
+  }
+
+  #valorant, #embreve1, #embreve2, #linha, #linha-2, #partida {
+    position: static;
+    display: block;
+    width: 90%;
+    margin: 20px auto;
+  }
+
+  #btnpartidas {
+    position: static;
+    display: block;
+    margin: 40px auto;
+    font-size: 20px;
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 20px;
+  }
+
+  .hero-text {
+    font-size: 1.4rem;
+  }
+
+  #button1 {
+    font-size: 16px;
+    padding: 12px 20px;
+  }
+
+  .texto {
+    font-size: 14px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
 }
 
 /* Estilo para o título da loja que fica abaixo do botão de partidas */
@@ -380,3 +509,4 @@ button:hover {
     z-index: 2;
     left: 170px;
 }
+
