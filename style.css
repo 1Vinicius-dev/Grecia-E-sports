@@ -19,7 +19,7 @@ body{
     
 }
 header{
-    height: 100px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -319,11 +319,11 @@ color: white;
 
 #btnpartidas{
 
-    top: 3500px;
-   left: 740px;
- font-size: 30px;
- border-radius: 5px;
- cursor: pointer;
+  top: 3500px;
+  left: 740px;
+  font-size: 30px;
+  border-radius: 5px;
+  cursor: pointer;
 
   top: 3500px;
   left: 800px;
@@ -359,6 +359,10 @@ button:hover {
 
 /* Responsividade */
 @media (max-width: 1024px) {
+  .player{
+    display: none;
+  }
+  
   header {
     margin-left: 0;
     flex-direction: column;
@@ -396,11 +400,11 @@ button:hover {
   }
 
   .hero-text {
-    position: static;
+    position: relative;
     transform: none;
     width: 90%;
-    font-size: 1.8rem;
-    margin: 20px auto;
+    margin: 10px auto;
+    left: 50px;
   }
 
   #button1 {
