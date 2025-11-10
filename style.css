@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     border: 0;
@@ -7,49 +7,48 @@
     font-family: 'Geologic', sans-serif;
 }
 
-body{
+body {
     background-color: #000346;
-  
     overflow: auto;
 }
 
-/*cabeçalho*/
-.navli{
-      background-color: #B3ADB1;
-    
+.wrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
 }
-header{
+
+
+header {
     height: 120px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     margin-left: 45%;
-
+    gap: 2rem;
     background-color: #B3ADB1;
 }
 
-.logo{
+.logo {
     position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    left: -40px;
 }
 
-.logo img{
+.logo img {
     height: 60px;
     filter: invert(10%) sepia(90%) saturate(500%) hue-rotate(180deg);
-    padding-left: 58px;
 }
 
-.logo h1{
+.logo h1 {
     color: #01304E;
     letter-spacing: 2.8px;
     font-size: 25px;
 }
 
-nav ul{
+nav ul {
     position: relative;
     list-style: none;
     display: flex;
@@ -57,57 +56,28 @@ nav ul{
     margin-right: 15px;
 }
 
-nav a{
+nav a {
     text-decoration: none;
     color: #01304E;
     letter-spacing: 1.5px;
     font-weight: 700;
     font-size: 15px;
-    
+
 }
 
-nav a:hover{
+nav a:hover {
     color: #AB7F32;
     transition: 0.12s;
 }
 
 /* seção principal*/
 
-.hero{
+.hero {
     display: flex;
     height: calc(100vh - 70px);
 }
 
-.hero-left{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 80px;
-    position: relative;
-}
-
-.hero-right h2{
-    font-size: 40px;
-    line-height: 1.3;
-    font-weight: 800;
-    color: white;
-}
-
-.hero-right h2 span{
-    color: #AB7F32;
-}
-
-.hero-right h2::after{
-    content: "";
-    display: block;
-    height: 8px;
-    width: 220px;
-    background-color: #AB7F32;
-    margin-top: 10px;
-}
-
-.player{
+.player {
     position: relative;
     display: flex;
     justify-content: center;
@@ -117,20 +87,20 @@ nav a:hover{
 }
 
 .hero-text {
-  position: absolute;
-  width: 700px ;
-  top: 48%;        
-  left: 46%;       
-  transform: translateY(-50%); 
-  color: white;
-  font-weight: bold;
-  font-size: 2.5rem;
-  line-height: 1.2;
+    position: absolute;
+    width: 700px;
+    top: 48%;
+    left: 46%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 2.5rem;
+    line-height: 1.2;
 }
 
 /*botão*/
 
-#button1{
+#button1 {
     background-color: #AB7F32;
     color: white;
     border: none;
@@ -148,369 +118,236 @@ nav a:hover{
 }
 
 button:hover {
-  background-color: #d4af37;
+    background-color: #d4af37;
 }
 
-button:active{
-    transform: scale(0.9);
-}
-
-
-
-
-/*socials*/ 
-.instagram{
+.instagram {
     border: none;
     position: absolute;
     top: 70%;
     left: 96.5%;
-    width: 42px;  
+    width: 42px;
 }
 
-.Twitter{
+.Twitter {
     position: absolute;
     top: 78%;
     left: 96.5%;
     width: 42px;
 }
 
-.youtube{
+.youtube {
     position: absolute;
     top: 86%;
     left: 96.5%;
     width: 42px;
 }
 
-.sobre {
-  position: relative;
-  height: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background-color: #B3ADB1;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 80%;
-  overflow: hidden;
-}
-
-/* Caixa branca que representa o "segundo quadrante" - aplica-se ao texto dentro da seção */
-
-
-/* IMAGEM SOBRE (à esquerda, acima do centro) */
-.titulo-img {
-  position: absolute;
-  left: 200px;
-  top: 44%;
-  transform: translateY(-50%);
-  width: 500px;
-}
-
-/* TEXTO AO LADO DIREITO */
-.texto {
-  color: #000346;
-  width: 570px;
-  margin-right: 300px;
-  font-weight: 700;
-  line-height: 1.4;
-  font-size: 20px;
-  z-index: 2;
-}
-
-.subtitulo {
-  color: #000346;
-  font-weight: 800;
-  letter-spacing: 1px;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.texto strong {
-  color: #AB7F32;
-  font-weight: 800;
-}
-
-#ctr{
-     position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-       width: 900px;
-    height: 800px;
-}
-#pilastra1{
-     position: absolute;
-      top: 10%;
-       width: 150px;
-       left: 60px
-}
-#pilastra2{
-     position: absolute;
-      top: 10%;
-       width: 150px;
-       right: 100px;
-}
-
-#jogos{
-    position: absolute;
-     left: 170px;
-font-size: 120px;
-color: white;
-}
-#valorant{
-    position: absolute;
-    top: 2100px;
-   left: 120px;
-    width: 400px;
-    height: auto;
-}
-#embreve1{
-    position: absolute;
-    top: 2100px;
-   left: 750px;
-    width: 400px;
-    height: auto;
-}
-#embreve2{
-    position: absolute;
-    top: 2100px;
-   left: 1400px;
-    width: 400px;
-    height: auto;
-}
-#linha{
-   
-    position: absolute;
-    left: 700px;
-    top: 1960px;
-    width: 1100px;
-
-}
-#linha-2{
-  position: absolute;
-  left: 900px;
-  top: 2723px;
-  width: 900px;
-}
-#partidas{
-  position: absolute;
-  left: 170px;
-  font-size: 120px;
-  color: white;
-  top: 2650px;
-}
-#partida{
-  position: absolute;
-  align-items: center;
-  top: 2700px;
-  width: 1980px;
-  height: auto;
-
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 2700px;
-    width: 1980px;
-    height: auto;
-    display: flex;
-    justify-content: center;
-
-}
-
-#btnpartidas{
-
-  top: 3500px;
-  left: 740px;
-  font-size: 30px;
-  border-radius: 5px;
-  cursor: pointer;
-
-  top: 3500px;
-  left: 800px;
-  font-size: 30px;
-  border-radius: 5px;
-  cursor: pointer;
-
-  margin-top: 30px;
-  position: absolute;
-  display: inline-block;
-  padding: 14px 40px;
-  
-  text-decoration: none;
-  font-family: 'Geologic', sans-serif;
-  font-weight: 700;
-  letter-spacing: 1.3px;
-  text-transform: uppercase;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-    
-}
-#button:hover {
-  background-color: #000346;
-}
-button:hover {
-  background-color: #B3ADB1;
-
-}
-
-#button:active{
-    transform: scale(0.9);
-}
-
-/* Responsividade */
-@media (max-width: 1024px) {
-  .player{
-    display: none;
-  }
-  
-  header {
-    margin-left: 0;
-    flex-direction: column;
-    height: auto;
-    padding: 10px;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-    margin: 15px 0;
-  }
-
-  .logo {
-    justify-content: center;
-    left: 0;
-  }
-
-  .logo img {
-    padding-left: 0;
-  }
-
-  /* Hero section */
-  .hero {
-    flex-direction: column;
-    height: auto;
-    text-align: center;
-    padding: 40px 10px;
-  }
-
-  .hero-left, .hero-right {
+.title {
     width: 100%;
-    padding: 0;
-    align-items: center;
-  }
-
-  .hero-text {
     position: relative;
-    transform: none;
-    width: 90%;
-    margin: 10px auto;
-    left: 50px;
-  }
+    display: inline-flex;
+    align-items: center;
+    gap: 20px; /* space between text and line */
+}
 
-  #button1 {
-    position: static;
-    transform: none;
-    margin: 30px auto;
-    padding: 15px 40px;
-    font-size: 20px;
-    display: block;
-  }
+.title h1 {
+    font-size: 120px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
 
-  /* Ícones sociais */
-  .instagram, .Twitter, .youtube {
-    position: static;
-    width: 35px;
-    margin: 10px;
-  }
+.title::after {
+    content: '';
+    position: static; /* changed from absolute */
+    width: 100%; /* or specific width like 200px */
+    height: 3px;
+    background-color: #AB7F32;
+    display: inline-block;
+}
 
-  /* Seção "sobre" */
-  .sobre {
-    flex-direction: column;
+
+
+#modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+#valorant, #embreve1, #embreve2 {
+    width: 100%;
     height: auto;
-    padding: 60px 20px;
-    background-size: cover;
-  }
+}
 
-  .titulo-img {
-    position: static;
-    width: 80%;
-    max-width: 400px;
-    margin-bottom: 30px;
-  }
+/* Media Queries */
+@media (max-width: 1024px) {
+    .player {
+        display: none;
+    }
 
-  .texto {
-    position: static;
-    width: 90%;
-    margin: 0 auto;
-    font-size: 16px;
-    text-align: center;
-  }
+    header {
+        margin-left: 0;
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
 
-  /* Sessão jogos */
-  #jogos, #partidas {
-    position: static;
-    text-align: center;
-    font-size: 60px;
-    margin-top: 50px;
-  }
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 0;
+    }
 
-  #valorant, #embreve1, #embreve2, #linha, #linha-2, #partida {
-    position: static;
-    display: block;
-    width: 90%;
-    margin: 20px auto;
-  }
+    .logo {
+        justify-content: center;
+        left: 0;
+    }
 
-  #btnpartidas {
-    position: static;
-    display: block;
-    margin: 40px auto;
-    font-size: 20px;
-    padding: 12px 30px;
-  }
+    .logo img {
+        padding-left: 0;
+    }
+
+    /* Hero section */
+    .hero {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+        padding: 40px 10px;
+    }
+
+    .hero-left,
+    .hero-right {
+        width: 100%;
+        padding: 0;
+        align-items: center;
+    }
+
+    .hero-text {
+        position: relative;
+        transform: none;
+        width: 90%;
+        margin: 10px auto;
+        left: 50px;
+    }
+
+    #button1 {
+        position: static;
+        transform: none;
+        margin: 30px auto;
+        padding: 15px 40px;
+        font-size: 20px;
+        display: block;
+    }
+
+    /* Ícones sociais */
+    .instagram,
+    .Twitter,
+    .youtube {
+        position: static;
+        width: 35px;
+        margin: 10px;
+    }
+
+    /* Seção "sobre" */
+    .sobre {
+        flex-direction: column;
+        height: auto;
+        padding: 60px 20px;
+        background-size: cover;
+    }
+
+    .titulo-img {
+        position: static;
+        width: 80%;
+        max-width: 400px;
+        margin-bottom: 30px;
+    }
+
+    .texto {
+        position: static;
+        width: 90%;
+        margin: 0 auto;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    /* Sessão jogos */
+    #jogos,
+    #partidas {
+        position: static;
+        text-align: center;
+        font-size: 60px;
+        margin-top: 50px;
+    }
+
+    #valorant,
+    #embreve1,
+    #embreve2,
+    #linha,
+    #linha-2,
+    #partida {
+        position: static;
+        display: block;
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    #btnpartidas {
+        position: static;
+        display: block;
+        margin: 40px auto;
+        font-size: 20px;
+        padding: 12px 30px;
+    }
 }
 
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 20px;
-  }
+    header h1 {
+        font-size: 20px;
+    }
 
-  .hero-text {
-    font-size: 1.4rem;
-  }
+    .hero-text {
+        font-size: 1.4rem;
+    }
 
-  #button1 {
-    font-size: 16px;
-    padding: 12px 20px;
-  }
+    #button1 {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
 
-  .texto {
-    font-size: 14px;
-  }
+    .texto {
+        font-size: 14px;
+    }
 
-  .logo img {
-    height: 50px;
-  }
+    .logo img {
+        height: 50px;
+    }
 }
 
 /* Estilo para o título da loja que fica abaixo do botão de partidas */
-#loja{
-    
+#loja {
+
     position: absolute;
     margin-top: 1850px;
-    color: #ffffff; /* ajusta conforme necessário */
+    color: #ffffff;
+    /* ajusta conforme necessário */
     font-size: 120px;
     letter-spacing: 2px;
     z-index: 2;
     left: 170px;
 }
+
 #textloja {
     position: absolute;
     margin-top: 2000px;
-    color: #ffffff; /* ajusta conforme necessário */
+    color: #ffffff;
+    /* ajusta conforme necessário */
     letter-spacing: 2px;
     font-size: 30px;
     z-index: 2;
     left: 170px;
 }
-
