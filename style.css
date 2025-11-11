@@ -376,7 +376,7 @@ button:hover {
 .produto-imagem {
     width: 240px;
     height: 280px;
-    background: #8A8A8A;
+    background: #979797;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -680,8 +680,8 @@ footer {
     }
 
     #ctr {
-        height: 120px;
-    }
+        height: 120px;
+   }
 
     .texto {
         text-align: center;
