@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre a Equipe - Grécia E-Sports</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      box-sizing: border-box;
+      font-family: 'Geologica', sans-serif;
+    }
+
+    body {
+      background-color: #000346;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background-color: #B3ADB1;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 50px;
+    }
+
+    .logo img {
+      height: 60px;
+      filter: invert(10%) sepia(90%) saturate(500%) hue-rotate(180deg);
+    }
+
+    .logo h1 {
+      color: #01304E;
+      letter-spacing: 2.8px;
+      font-size: 25px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 60px;
+      margin-right: 50px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #01304E;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #AB7F32;
+    }
+
+    /* Seção Principal Sobre */
+    .sobre-hero {
+      position: relative;
+      height: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background-color: #B3ADB1;
+      overflow: hidden;
+    }
+
+    .titulo-img {
+      position: absolute;
+      left: 200px;
+      top: 44%;
+      transform: translateY(-50%);
+      width: 500px;
+    }
+
+    .texto-hero {
+      color: #000346;
+      width: 570px;
+      margin-right: 300px;
+      font-weight: 700;
+      line-height: 1.4;
+      font-size: 20px;
+      z-index: 2;
+    }
+
+    .subtitulo {
+      color: #000346;
+      font-weight: 800;
+      letter-spacing: 1px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .texto-hero strong {
+      color: #AB7F32;
+      font-weight: 800;
+    }
+
+    #ctr {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 800px;
+    }
+
+    #pilastra1 {
+      position: absolute;
+      top: 10%;
+      width: 150px;
+      left: 60px;
+    }
+
+    #pilastra2 {
+      position: absolute;
+      top: 10%;
+      width: 150px;
+      right: 100px;
+    }
+
+    /* Seção de Conteúdo Adicional */
+    .conteudo-section {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 40px;
+    }
+
+    .section-title {
+      font-size: 80px;
+      color: #ffffff;
+      letter-spacing: 2px;
+      margin-bottom: 60px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #AB7F32;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .info-card {
+      background: linear-gradient(135deg, #01304E 0%, #012a45 100%);
+      padding: 40px;
+      border-radius: 15px;
+      border: 3px solid #AB7F32;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(171, 127, 50, 0.3);
+    }
+
+    .info-card h3 {
+      color: #AB7F32;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .info-card p {
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+
+    .info-card ul {
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 2;
+      font-weight: 500;
+      list-style-position: inside;
+      margin-top: 15px;
+    }
+
+    .info-card ul li {
+      margin-bottom: 8px;
+    }
+
+    .destaque-box {
+      background: linear-gradient(135deg, #AB7F32 0%, #d4af37 100%);
+      padding: 60px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 80px 0;
+      box-shadow: 0 20px 60px rgba(171, 127, 50, 0.4);
+    }
+
+    .destaque-box h2 {
+      color: #01304E;
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .destaque-box p {
+      color: #01304E;
+      font-size: 20px;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 80px 0;
+    }
+
+    .stat-box {
+      background: #B3ADB1;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      border: 3px solid #01304E;
+    }
+
+    .stat-number {
+      font-size: 64px;
+      color: #AB7F32;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      color: #01304E;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* Footer */
+    footer {
+      background: #B3ADB1;
+      padding: 80px 0 30px;
+      margin-top: 120px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 60px;
+      padding: 0 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img {
+      width: 150px;
+    }
+
+    .footer-section h3 {
+      color: #01304E;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-section ul li a {
+      color: #01304E;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #AB7F32;
+    }
+
+    .footer-newsletter {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .footer-newsletter h3 {
+      color: #01304E;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 20px;
+      background: white;
+      border: 2px solid #01304E;
+      border-radius: 5px;
+      color: #01304E;
+      font-size: 14px;
+    }
+
+    .newsletter-form button {
+      padding: 12px 30px;
+      background: #01304E;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background: #AB7F32;
+    }
+
+    .newsletter-aviso {
+      color: #01304E;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 50px 0 30px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 2px solid #01304E;
+      margin: 0 40px;
+    }
+
+    .footer-bottom p {
+      color: #01304E;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    /* Responsivo */
+    @media (max-width: 1024px) {
+      header {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+        margin: 15px 0;
+      }
+
+      .logo {
+        margin-left: 0;
+      }
+
+      .sobre-hero {
+        height: auto;
+        padding: 60px 20px;
+      }
+
+      .titulo-img {
+        position: static;
+        width: 80%;
+        max-width: 300px;
+        margin: 0 auto 40px;
+        transform: none;
+      }
+
+      .texto-hero {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+      }
+
+      #ctr {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+      }
+
+      #pilastra1, #pilastra2 {
+        width: 100px;
+      }
+
+      .section-title {
+        font-size: 50px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .destaque-box h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+ 
+  <!-- Conteúdo Adicional -->
+  <section class="conteudo-section">
+    <h2 class="section-title">NOSSA ESTRUTURA</h2>
+
+    <div class="stats-container">
+      <div class="stat-box">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">PROFISSIONAIS</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">5</div>
+        <div class="stat-label">MODALIDADES</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">2025</div>
+        <div class="stat-label">FUNDAÇÃO</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">RJ</div>
+        <div class="stat-label">SEDE</div>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>EQUIPE COMPLETA</h3>
+        <p>
+          Atualmente, a equipe conta com mais de 40 profissionais, incluindo jogadores de elite, técnicos especializados, analistas de desempenho e uma equipe administrativa dedicada. Todos trabalham em sinergia para garantir o melhor desempenho em cada competição.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>MODALIDADES</h3>
+        <p>Presença forte e competitiva em:</p>
+        <ul>
+          <li>VALORANT</li>
+          <li>League of Legends</li>
+          <li>Counter-Strike 2</li>
+          <li>eFootball</li>
+          <li>Free Fire</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>CATEGORIAS DE BASE</h3>
+        <p>
+          Além das equipes principais, mantemos categorias de base e programas de treinamento especializados para identificar e desenvolver novos talentos, fomentando o crescimento sustentável dos e-sports no Brasil.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>CENTRO DE TREINAMENTO</h3>
+        <p>
+          Investimos em tecnologia e infraestrutura de ponta, com um centro de treinamento equipado com estúdios de análise avançada, áreas de imersão tática e acompanhamento psicológico e físico completo para nossos atletas.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>PARCERIAS ESTRATÉGICAS</h3>
+        <p>Contamos com apoio de marcas líderes:</p>
+        <ul>
+          <li>HyperZone Gaming Gear</li>
+          <li>BlueWave Energy Drink</li>
+          <li>NextPlay Academy</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>COMPROMISSO SOCIAL</h3>
+        <p>
+          Acreditamos no poder da comunidade gamer. Promovemos eventos, workshops e ações sociais que aproximam os fãs e incentivam o crescimento saudável do ecossistema de e-sports brasileiro.
+        </p>
+      </div>
+    </div>
+
+    <div class="destaque-box">
+      <h2>NOSSA MISSÃO</h2>
+      <p>
+        Nosso compromisso vai além da vitória: queremos inspirar, educar e transformar o jogo em uma experiência que ultrapasse as telas. Consolidando a Grécia e-Sports como uma das organizações mais promissoras da América Latina.
+      </p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>VISÃO DE FUTURO</h3>
+        <p>
+          Consolidar a Grécia e-Sports como referência internacional em esportes eletrônicos, expandindo nossa presença em torneios globais e desenvolvendo talentos que representem o Brasil no cenário mundial.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>VALORES</h3>
+        <ul>
+          <li>Excelência competitiva</li>
+          <li>Trabalho em equipe</li>
+          <li>Inovação constante</li>
+          <li>Respeito e integridade</li>
+          <li>Paixão pelo jogo</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h3>LOCALIZAÇÃO</h3>
+        <p>
+          Com sede no Rio de Janeiro (RJ), nossa estrutura está estrategicamente localizada para facilitar participação em eventos nacionais e internacionais, além de proporcionar fácil acesso para parcerias e colaborações.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="./imagens/logo grecia2.png" alt="Grécia E-Sports Logo">
+      </div>
+      
+      <div class="footer-section">
+        <h3>INFORMAÇÕES</h3>
+        <ul>
+          <li><a href="#">QUEM SOMOS</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">TROCA E DEVOLUÇÕES</a></li>
+          <li><a href="#">FORMAS DE PAGAMENTO</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>POLÍTICAS</h3>
+        <ul>
+          <li><a href="#">TERMOS E CONDIÇÕES</a></li>
+          <li><a href="#">POLÍTICA DE PRIVACIDADE</a></li>
+          <li><a href="#">POLÍTICA DE COOKIE</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-newsletter">
+        <h3>INSCREVA-SE E RECEBA TODAS AS NOVIDADES DA GRÉCIA</h3>
+        <div class="newsletter-form">
+          <input type="email" placeholder="E-mail">
+          <button>Enviar E-mail</button>
+        </div>
+        <p class="newsletter-aviso">Ao assinar, você concorda com os Termos de Uso e a Política de Privacidade.</p>
+      </div>
+    </div>
+    
+    <div class="footer-social">
+      <a href="#" class="social-icon">
+        <img src="imagens/youtube.png" alt="YouTube">
+      </a>
+      <a href="#" class="social-icon">
+        <img src="imagens/Twitter.png" alt="Twitter">
+      </a>
+      <a href="https://www.instagram.com/greciae.sports?igsh=ZXd0bDZka2trbHd3" target="_blank" rel="noopener noreferrer" class="social-icon">
+        <img src="imagens/instagram.png" alt="Instagram">
+      </a>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>Todos os Direitos Reservados<br>© 2025 - MADE IN BRAZIL</p>
+    </div>
+  </footer>
+</body>
+
+</html>

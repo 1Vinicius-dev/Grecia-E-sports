@@ -111,6 +111,13 @@ nav a:hover {
     position: absolute;
     left: 46.3%;
     transform: scale(1);
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+#button1:hover {
+    background-color: #d4af37;
 }
 
 button:hover {
