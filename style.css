@@ -123,6 +123,12 @@ button:hover {
     top: 70%;
     left: 96.5%;
     width: 42px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.instagram:hover {
+    transform: scale(1.1);
 }
 
 .Twitter {
@@ -152,10 +158,7 @@ button:hover {
   overflow: hidden;
 }
 
-/* Caixa branca que representa o "segundo quadrante" - aplica-se ao texto dentro da seção /
-
-
-/ IMAGEM SOBRE (à esquerda, acima do centro) /
+/* IMAGEM SOBRE (à esquerda, acima do centro) */
 .titulo-img {
   position: absolute;
   left: 200px;
@@ -164,7 +167,7 @@ button:hover {
   width: 500px;
 }
 
-/ TEXTO AO LADO DIREITO */
+/* TEXTO AO LADO DIREITO */
 .texto {
   color: #000346;
   width: 570px;
@@ -460,7 +463,6 @@ footer {
 
 .footer-logo img {
     width: 150px;
-   
 }
 
 .footer-section h3 {
@@ -547,24 +549,12 @@ footer {
     margin: 50px 0 30px;
 }
 
-/* .social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: #01304E;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-} */
-
 .social-icon img {
     width: 24px;
     filter: invert(1);
 }
 
 .social-icon:hover {
-    /* background: #ffffff; */
     transform: scale(1.1);
 }
 

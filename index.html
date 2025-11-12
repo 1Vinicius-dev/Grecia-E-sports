@@ -38,7 +38,9 @@
           <img src="imagens/Group 21.png" class="hero-text" alt="">
           <button id="button1">MAIS</button>
           <div class="socials">
-            <img src="imagens/instagram.png" class="instagram" alt="">
+            <a href="https://www.instagram.com/greciae.sports?igsh=ZXd0bDZka2trbHd3" target="_blank" rel="noopener noreferrer">
+              <img src="imagens/instagram.png" class="instagram" alt="Instagram">
+            </a>
             <img src="imagens/Twitter.png" class="Twitter" alt="">
             <img src="imagens/youtube.png" class="youtube" alt="">
           </div>
@@ -48,15 +50,12 @@
   </div>
 
   <section class="sobre">
-
-
-
     <img src="imagens/sobre.png" alt="Título Sobre" class="titulo-img">
 
     <div>
-      <img id="ctr" src="imagens/construçao.png" alt="" srcset="">
-    <img id="pilastra1" src="imagens/pilastra.png" alt="">
-     <img id="pilastra2" src="imagens/pilastra.png" alt="">
+      <img id="ctr" src="imagens/construção.png" alt="" srcset="">
+      <img id="pilastra1" src="imagens/pilastra.png" alt="">
+      <img id="pilastra2" src="imagens/pilastra.png" alt="">
     </div>
 
     <div class="texto">
@@ -66,7 +65,7 @@
         Com uma visão focada na excelência, a Grécia Esports reúne jogadores excepcionais, unindo talento e estratégia para criar um legado no mundo dos jogos.
       </p>
       <p>
-        Somos movidos por um lema que reflete nossa mentalidade: <strong>“Unidos na vitória, invencíveis no desafio.”</strong>
+        Somos movidos por um lema que reflete nossa mentalidade: <strong>"Unidos na vitória, invencíveis no desafio."</strong>
       </p>
       <p>
         Com base em nossa essência de união e resiliência, conquistamos rápido destaque nas principais competições.
@@ -139,6 +138,30 @@
           <h3>CHAVEIRO OFICIAL</h3>
           <p class="preco">R$19,99</p>
         </div>
+        
+        <div class="produto-card">
+          <div class="produto-imagem">
+            <img src="./imagens/bolsa grecia2.png" alt="Bolsa Oficial">
+          </div>
+          <h3>BOLSA OFICIAL</h3>
+          <p class="preco">R$59,99</p>
+        </div>
+        
+        <div class="produto-card">
+          <div class="produto-imagem">
+            <img src="./imagens/meia grecia2.png" alt="Meia Oficial">
+          </div>
+          <h3>MEIA OFICIAL</h3>
+          <p class="preco">R$49,99</p>
+        </div>
+        
+        <div class="produto-card">
+          <div class="produto-imagem">
+            <img src="./imagens/pulseira grecia2.png" alt="Pulseira Oficial">
+          </div>
+          <h3>PULSEIRA OFICIAL</h3>
+          <p class="preco">R$29,99</p>
+        </div>
       </div>
       
       <button class="carrossel-btn next">›</button>
@@ -188,14 +211,36 @@
       <a href="#" class="social-icon">
         <img src="imagens/Twitter.png" alt="Twitter">
       </a>
-      <a href="https://www.instagram.com/greciae.sports?igsh=ZXd0bDZka2trbHd3" class="social-icon" ><img src="imagens/instagram.png" alt="Instagram"></a>
-        
+      <a href="https://www.instagram.com/greciae.sports?igsh=ZXd0bDZka2trbHd3" target="_blank" rel="noopener noreferrer" class="social-icon">
+        <img src="imagens/instagram.png" alt="Instagram">
+      </a>
     </div>
     
     <div class="footer-bottom">
       <p>Todos os Direitos Reservados<br>© 2025 - MADE IN BRAZIL</p>
     </div>
   </footer>
+
+  <script>
+    // Funcionalidade do carrossel
+    const prevBtn = document.querySelector('.carrossel-btn.prev');
+    const nextBtn = document.querySelector('.carrossel-btn.next');
+    const container = document.querySelector('.produtos-container');
+    
+    prevBtn.addEventListener('click', () => {
+      container.scrollBy({
+        left: -310,
+        behavior: 'smooth'
+      });
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      container.scrollBy({
+        left: 310,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 
 </html>
