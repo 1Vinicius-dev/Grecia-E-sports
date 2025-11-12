@@ -139,91 +139,75 @@ button:hover {
     width: 42px;
 }
 
-/* SEÇÃO SOBRE - USANDO FLEXBOX */
 .sobre {
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 100px;
-    align-items: center;
-    padding: 80px 100px;
-    background-color: #B3ADB1;
-    position: relative;
-    min-height: 600px;
-    overflow: hidden;
+  position: relative;
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #B3ADB1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  overflow: hidden;
 }
 
-/* Título SOBRE */
-.sobre > img.titulo-img {
-    grid-column: 1;
-    width: 350px;
-    z-index: 2;
-    margin-top: 0;
+/* Caixa branca que representa o "segundo quadrante" - aplica-se ao texto dentro da seção /
+
+
+/ IMAGEM SOBRE (à esquerda, acima do centro) /
+.titulo-img {
+  position: absolute;
+  left: 200px;
+  top: 44%;
+  transform: translateY(-50%);
+  width: 500px;
 }
 
-/* Pilastras em background */
-.sobre > div:first-of-type {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 0;
-    position: absolute;
-    left: 50px;
-    bottom: 0;
-    z-index: 1;
-}
-
-#pilastra1 {
-    position: relative;
-    display: flex;
-    top: -70px;
-    height: 500px;
-    width: auto;
-    
-}
-
-#ctr {
-   display: flex;
-   
-}
-
-#pilastra2 {
-    top: -70px;
-    position: relative;
-    display: flex;
-    height: 500px;
-    width: auto;
-    left: 1600px;
-    
-}
-
-/* Texto da direita */
+/ TEXTO AO LADO DIREITO */
 .texto {
-    grid-column: 2;
-    color: #01304E;
-    text-align: left;
-    line-height: 1.7;
-    font-size: 17px;
-    z-index: 2;
-    max-width: 550px;
+  color: #000346;
+  width: 570px;
+  margin-right: 300px;
+  font-weight: 700;
+  line-height: 1.4;
+  font-size: 20px;
+  z-index: 2;
 }
 
-.texto .subtitulo {
-    font-size: 19px;
-    margin-bottom: 25px;
-    color: #AB7F32;
-    font-weight: 700;
-    line-height: 1.4;
-}
-
-.texto p {
-    margin-bottom: 22px;
+.subtitulo {
+  color: #000346;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .texto strong {
-    color: #AB7F32;
-    font-weight: 700;
+  color: #AB7F32;
+  font-weight: 800;
 }
 
+#ctr{
+     position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+       width: 900px;
+    height: 800px;
+}
+#pilastra1{
+     position: absolute;
+      top: 10%;
+       width: 150px;
+       left: 60px
+}
+#pilastra2{
+     position: absolute;
+      top: 10%;
+       width: 150px;
+       right: 100px;
+}
 /* Seção JOGOS */
 .title {
     width: 100%;
