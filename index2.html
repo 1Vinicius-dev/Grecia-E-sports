@@ -23,6 +23,38 @@
       overflow-x: hidden;
     }
 
+    /* Botão Voltar */
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: #AB7F32;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(171, 127, 50, 0.4);
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background: #d4af37;
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(171, 127, 50, 0.6);
+    }
+
+    .back-button svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+
     /* Header */
     header {
       height: 120px;
@@ -384,6 +416,13 @@
 
     /* Responsivo */
     @media (max-width: 1024px) {
+      .back-button {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+      }
+
       header {
         flex-direction: column;
         height: auto;
@@ -445,7 +484,13 @@
 </head>
 
 <body>
- 
+  <!-- Botão Voltar -->
+  <a href="index1.html" class="back-button" title="Voltar para página inicial">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+    </svg>
+  </a>
+
   <!-- Conteúdo Adicional -->
   <section class="conteudo-section">
     <h2 class="section-title">NOSSA ESTRUTURA</h2>
