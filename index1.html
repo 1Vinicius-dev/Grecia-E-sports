@@ -90,6 +90,7 @@
     <div class="title">
       <h1>PARTIDAS</h1>
     </div>
+    <video id="video" src="./gameplay.mp4" muted autoplay loop controls></video>
     <img src="imagens/partidas.png" alt="" class="wrapper">
     <button id="btnpartidas">ASSISTA AS PARTIDAS</button>
   </div>
@@ -269,308 +270,453 @@
           </div>
       </div>
   </div>
+<script>
+  // Script para adicionar no index1.html - Integração de Autenticação com Carrinho
 
-  <script>
-    // Sistema de Carrinho de Compras
-    const cart = {
-        items: [],
-        cupomAplicado: false,
+// Sistema de Autenticação (mesmo código do login)
+const AuthSystem = {
+    users: [
+        { id: 1, name: "João Silva", email: "joao@example.com", password: "123456" },
+        { id: 2, name: "Maria Santos", email: "maria@example.com", password: "senha123" },
+        { id: 3, name: "Admin", email: "admin@grecia.com", password: "admin123" }
+    ],
+
+    init() {
+        const saved = localStorage.getItem('greciaUsers');
+        if (saved) {
+            this.users = JSON.parse(saved);
+        }
+    },
+
+    isLoggedIn() {
+        const sessionUser = sessionStorage.getItem('greciaUser');
+        const rememberUser = localStorage.getItem('greciaUserRemember');
+
+        if (sessionUser) return JSON.parse(sessionUser);
+        if (rememberUser) {
+            const user = JSON.parse(rememberUser);
+            sessionStorage.setItem('greciaUser', JSON.stringify(user));
+            return user;
+        }
+        return null;
+    },
+
+    getCurrentUser() {
+        return this.isLoggedIn();
+    },
+
+    logout() {
+        sessionStorage.removeItem('greciaUser');
+        localStorage.removeItem('greciaUserRemember');
+        window.location.reload();
+    },
+
+    requireLogin() {
+        const user = this.isLoggedIn();
+        if (!user) {
+            localStorage.setItem('greciaRedirectUrl', window.location.href);
+            return false;
+        }
+        return true;
+    }
+};
+
+// Modificar o sistema de carrinho para exigir login
+const cart = {
+    items: [],
+    cupomAplicado: false,
+    
+    init() {
+        AuthSystem.init();
+        this.loadCart();
+        this.setupEventListeners();
+        this.addCartButtons();
+        this.updateUI();
+        this.updateUserInterface();
+    },
+    
+    // Atualizar interface baseado no login
+    updateUserInterface() {
+        const user = AuthSystem.getCurrentUser();
+        const header = document.querySelector('header');
         
-        init() {
-            this.loadCart();
-            this.setupEventListeners();
-            this.addCartButtons();
-            this.updateUI();
-        },
+        // Remover botão existente se houver
+        const existingBtn = document.getElementById('userBtn');
+        if (existingBtn) existingBtn.remove();
         
-        loadCart() {
-            const saved = localStorage.getItem('greciaCart');
-            if (saved) {
-                this.items = JSON.parse(saved);
+        if (user) {
+            // Usuário logado - mostrar nome e botão de logout
+            const userBtn = document.createElement('div');
+            userBtn.id = 'userBtn';
+            userBtn.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background: #AB7F32;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 25px;
+                font-weight: 700;
+                z-index: 999;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                box-shadow: 0 4px 15px rgba(171, 127, 50, 0.4);
+            `;
+            
+            userBtn.innerHTML = `
+                <span>👤 ${user.name}</span>
+                <button onclick="AuthSystem.logout()" style="
+                    background: white;
+                    color: #AB7F32;
+                    border: none;
+                    padding: 5px 15px;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    font-weight: 700;
+                    font-size: 12px;
+                ">SAIR</button>
+            `;
+            
+            document.body.appendChild(userBtn);
+        } else {
+            // Usuário não logado - mostrar botão de login
+            const loginBtn = document.createElement('a');
+            loginBtn.id = 'userBtn';
+            loginBtn.href = 'index-login.html';
+            loginBtn.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background: #AB7F32;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 25px;
+                font-weight: 700;
+                z-index: 999;
+                text-decoration: none;
+                box-shadow: 0 4px 15px rgba(171, 127, 50, 0.4);
+            `;
+            loginBtn.textContent = '🔐 FAZER LOGIN';
+            
+            document.body.appendChild(loginBtn);
+        }
+    },
+    
+    loadCart() {
+        const user = AuthSystem.getCurrentUser();
+        if (!user) {
+            this.items = [];
+            return;
+        }
+        
+        // Carregar carrinho específico do usuário
+        const saved = localStorage.getItem(`greciaCart_${user.id}`);
+        if (saved) {
+            this.items = JSON.parse(saved);
+        }
+    },
+    
+    saveCart() {
+        const user = AuthSystem.getCurrentUser();
+        if (!user) return;
+        
+        // Salvar carrinho específico do usuário
+        localStorage.setItem(`greciaCart_${user.id}`, JSON.stringify(this.items));
+    },
+    
+    setupEventListeners() {
+        document.getElementById('cartBtn').addEventListener('click', () => {
+            if (!AuthSystem.requireLogin()) {
+                this.showNotification('⚠️ Faça login para acessar o carrinho!', '#FF9800');
+                setTimeout(() => {
+                    window.location.href = 'index-login.html';
+                }, 1500);
+                return;
             }
-        },
-        
-        saveCart() {
-            localStorage.setItem('greciaCart', JSON.stringify(this.items));
-        },
-        
-        setupEventListeners() {
-            // Abrir/Fechar carrinho
-            document.getElementById('cartBtn').addEventListener('click', () => this.openCart());
-            document.getElementById('closeCart').addEventListener('click', () => this.closeCart());
-            document.getElementById('cartOverlay').addEventListener('click', () => this.closeCart());
-            
-            // Cupom
-            document.getElementById('cupomBtn').addEventListener('click', () => this.aplicarCupom());
-            document.getElementById('cupomInput').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') this.aplicarCupom();
-            });
-            
-            // Carrossel original
-            const prevBtn = document.querySelector('.carrossel-btn.prev');
-            const nextBtn = document.querySelector('.carrossel-btn.next');
-            const container = document.querySelector('.produtos-container');
-            
-            if (prevBtn && nextBtn && container) {
-                prevBtn.addEventListener('click', () => {
-                    container.scrollBy({ left: -310, behavior: 'smooth' });
-                });
-                
-                nextBtn.addEventListener('click', () => {
-                    container.scrollBy({ left: 310, behavior: 'smooth' });
-                });
-            }
-        },
-        
-        addCartButtons() {
-            const produtos = document.querySelectorAll('.produto-card');
-            
-            produtos.forEach((card, index) => {
-                const nome = card.querySelector('h3').textContent;
-                const precoText = card.querySelector('.preco').textContent;
-                const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
-                const imagem = card.querySelector('.produto-imagem img')?.src || '';
-                
-                // Criar botão
-                const btn = document.createElement('button');
-                btn.className = 'btn-add-cart';
-                btn.textContent = 'ADICIONAR AO CARRINHO';
-                btn.onclick = () => this.addItem({ id: index, nome, preco, imagem });
-                
-                card.appendChild(btn);
-            });
-        },
-        
-        addItem(produto) {
-            const existing = this.items.find(item => item.id === produto.id);
-            
-            if (existing) {
-                existing.quantidade++;
-            } else {
-                this.items.push({ ...produto, quantidade: 1 });
-            }
-            
-            this.saveCart();
-            this.updateUI();
             this.openCart();
-            this.showNotification('Produto adicionado ao carrinho!');
-        },
+        });
         
-        updateQuantity(id, delta) {
-            const item = this.items.find(i => i.id === id);
-            if (item) {
-                item.quantidade += delta;
-                if (item.quantidade <= 0) {
-                    this.removeItem(id);
-                } else {
-                    this.saveCart();
-                    this.updateUI();
+        document.getElementById('closeCart').addEventListener('click', () => this.closeCart());
+        document.getElementById('cartOverlay').addEventListener('click', () => this.closeCart());
+        
+        document.getElementById('cupomBtn').addEventListener('click', () => this.aplicarCupom());
+        document.getElementById('cupomInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') this.aplicarCupom();
+        });
+        
+        const prevBtn = document.querySelector('.carrossel-btn.prev');
+        const nextBtn = document.querySelector('.carrossel-btn.next');
+        const container = document.querySelector('.produtos-container');
+        
+        if (prevBtn && nextBtn && container) {
+            prevBtn.addEventListener('click', () => {
+                container.scrollBy({ left: -310, behavior: 'smooth' });
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                container.scrollBy({ left: 310, behavior: 'smooth' });
+            });
+        }
+    },
+    
+    addCartButtons() {
+        const produtos = document.querySelectorAll('.produto-card');
+        
+        produtos.forEach((card, index) => {
+            const nome = card.querySelector('h3').textContent;
+            const precoText = card.querySelector('.preco').textContent;
+            const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
+            const imagem = card.querySelector('.produto-imagem img')?.src || '';
+            
+            const btn = document.createElement('button');
+            btn.className = 'btn-add-cart';
+            btn.textContent = 'ADICIONAR AO CARRINHO';
+            btn.onclick = () => {
+                if (!AuthSystem.requireLogin()) {
+                    this.showNotification('⚠️ Faça login para adicionar produtos!', '#FF9800');
+                    setTimeout(() => {
+                        window.location.href = 'index-login.html';
+                    }, 1500);
+                    return;
                 }
-            }
-        },
-        
-        removeItem(id) {
-            this.items = this.items.filter(item => item.id !== id);
-            this.saveCart();
-            this.updateUI();
-        },
-        
-        aplicarCupom() {
-            const input = document.getElementById('cupomInput');
-            const cupom = input.value.trim().toLowerCase();
-            const msgEl = document.getElementById('cupomMsg');
+                this.addItem({ id: index, nome, preco, imagem });
+            };
             
-            if (cupom === 'julia10') {
-                this.cupomAplicado = true;
-                document.getElementById('cupomInputGroup').style.display = 'none';
-                document.getElementById('cupomAplicado').style.display = 'flex';
-                document.getElementById('cupomAplicado').innerHTML = `
-                    <span>JULIA10 - 10% OFF ✓</span>
-                    <button class="cupom-remove" onclick="cart.removerCupom()">×</button>
-                `;
-                msgEl.textContent = '✓ Cupom aplicado com sucesso!';
-                msgEl.className = 'cupom-msg success';
+            card.appendChild(btn);
+        });
+    },
+    
+    addItem(produto) {
+        if (!AuthSystem.requireLogin()) {
+            this.showNotification('⚠️ Faça login para adicionar produtos!', '#FF9800');
+            setTimeout(() => {
+                window.location.href = 'index-login.html';
+            }, 1500);
+            return;
+        }
+        
+        const existing = this.items.find(item => item.id === produto.id);
+        
+        if (existing) {
+            existing.quantidade++;
+        } else {
+            this.items.push({ ...produto, quantidade: 1 });
+        }
+        
+        this.saveCart();
+        this.updateUI();
+        this.openCart();
+        this.showNotification('✓ Produto adicionado ao carrinho!');
+    },
+    
+    updateQuantity(id, delta) {
+        const item = this.items.find(i => i.id === id);
+        if (item) {
+            item.quantidade += delta;
+            if (item.quantidade <= 0) {
+                this.removeItem(id);
+            } else {
+                this.saveCart();
                 this.updateUI();
-            } else {
-                msgEl.textContent = '✗ Cupom inválido';
-                msgEl.className = 'cupom-msg error';
-                setTimeout(() => msgEl.textContent = '', 3000);
             }
-        },
+        }
+    },
+    
+    removeItem(id) {
+        this.items = this.items.filter(item => item.id !== id);
+        this.saveCart();
+        this.updateUI();
+    },
+    
+    aplicarCupom() {
+        const input = document.getElementById('cupomInput');
+        const cupom = input.value.trim().toLowerCase();
+        const msgEl = document.getElementById('cupomMsg');
         
-        removerCupom() {
-            this.cupomAplicado = false;
-            document.getElementById('cupomInputGroup').style.display = 'flex';
-            document.getElementById('cupomAplicado').style.display = 'none';
-            document.getElementById('cupomInput').value = '';
-            document.getElementById('cupomMsg').textContent = '';
+        if (cupom === 'julia10' || cupom === 'grecia10') {
+            this.cupomAplicado = true;
+            document.getElementById('cupomInputGroup').style.display = 'none';
+            document.getElementById('cupomAplicado').style.display = 'flex';
+            document.getElementById('cupomAplicado').innerHTML = `
+                <span>${cupom.toUpperCase()} - 10% OFF ✔</span>
+                <button class="cupom-remove" onclick="cart.removerCupom()">×</button>
+            `;
+            msgEl.textContent = '✔ Cupom aplicado com sucesso!';
+            msgEl.className = 'cupom-msg success';
             this.updateUI();
-        },
+        } else {
+            msgEl.textContent = '✗ Cupom inválido';
+            msgEl.className = 'cupom-msg error';
+            setTimeout(() => msgEl.textContent = '', 3000);
+        }
+    },
+    
+    removerCupom() {
+        this.cupomAplicado = false;
+        document.getElementById('cupomInputGroup').style.display = 'flex';
+        document.getElementById('cupomAplicado').style.display = 'none';
+        document.getElementById('cupomInput').value = '';
+        document.getElementById('cupomMsg').textContent = '';
+        this.updateUI();
+    },
+    
+    calcularSubtotal() {
+        return this.items.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
+    },
+    
+    calcularDesconto() {
+        return this.cupomAplicado ? this.calcularSubtotal() * 0.10 : 0;
+    },
+    
+    calcularTotal() {
+        return this.calcularSubtotal() - this.calcularDesconto();
+    },
+    
+    updateUI() {
+        const totalItems = this.items.reduce((sum, item) => sum + item.quantidade, 0);
+        const cartCount = document.getElementById('cartCount');
+        const cartItems = document.getElementById('cartItems');
+        const cupomArea = document.getElementById('cupomArea');
+        const cartSummary = document.getElementById('cartSummary');
         
-        calcularSubtotal() {
-            return this.items.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
-        },
+        if (totalItems > 0) {
+            cartCount.textContent = totalItems;
+            cartCount.style.display = 'flex';
+        } else {
+            cartCount.style.display = 'none';
+        }
         
-        calcularDesconto() {
-            return this.cupomAplicado ? this.calcularSubtotal() * 0.10 : 0;
-        },
-        
-        calcularTotal() {
-            return this.calcularSubtotal() - this.calcularDesconto();
-        },
-        
-        updateUI() {
-            const totalItems = this.items.reduce((sum, item) => sum + item.quantidade, 0);
-            const cartCount = document.getElementById('cartCount');
-            const cartItems = document.getElementById('cartItems');
-            const cupomArea = document.getElementById('cupomArea');
-            const cartSummary = document.getElementById('cartSummary');
-            
-            // Atualizar contador
-            if (totalItems > 0) {
-                cartCount.textContent = totalItems;
-                cartCount.style.display = 'flex';
-            } else {
-                cartCount.style.display = 'none';
-            }
-            
-            // Atualizar lista de itens
-            if (this.items.length === 0) {
-                cartItems.innerHTML = '<div class="cart-empty">Seu carrinho está vazio</div>';
-                cupomArea.style.display = 'none';
-                cartSummary.style.display = 'none';
-            } else {
-                cartItems.innerHTML = this.items.map(item => `
-                    <div class="cart-item">
-                        <div class="cart-item-image">
-                            ${item.imagem ? `<img src="${item.imagem}" alt="${item.nome}">` : '📦'}
-                        </div>
-                        <div class="cart-item-info">
-                            <div class="cart-item-name">${item.nome}</div>
-                            <div class="cart-item-price">R$ ${item.preco.toFixed(2).replace('.', ',')}</div>
-                            <div class="cart-item-controls">
-                                <button class="qty-btn" onclick="cart.updateQuantity(${item.id}, -1)">−</button>
-                                <span class="qty-display">${item.quantidade}</span>
-                                <button class="qty-btn" onclick="cart.updateQuantity(${item.id}, 1)">+</button>
-                                <button class="remove-btn" onclick="cart.removeItem(${item.id})">🗑</button>
-                            </div>
+        if (this.items.length === 0) {
+            cartItems.innerHTML = `
+                <div class="cart-empty">
+                    <p>Seu carrinho está vazio</p>
+                    <small style="color: #B3ADB1; margin-top: 10px; display: block;">
+                        ${AuthSystem.isLoggedIn() ? 'Adicione produtos para começar!' : 'Faça login para adicionar produtos'}
+                    </small>
+                </div>
+            `;
+            cupomArea.style.display = 'none';
+            cartSummary.style.display = 'none';
+        } else {
+            cartItems.innerHTML = this.items.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        ${item.imagem ? `<img src="${item.imagem}" alt="${item.nome}">` : '📦'}
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.nome}</div>
+                        <div class="cart-item-price">R$ ${item.preco.toFixed(2).replace('.', ',')}</div>
+                        <div class="cart-item-controls">
+                            <button class="qty-btn" onclick="cart.updateQuantity(${item.id}, -1)">−</button>
+                            <span class="qty-display">${item.quantidade}</span>
+                            <button class="qty-btn" onclick="cart.updateQuantity(${item.id}, 1)">+</button>
+                            <button class="remove-btn" onclick="cart.removeItem(${item.id})">🗑</button>
                         </div>
                     </div>
-                `).join('');
-                
-                cupomArea.style.display = 'block';
-                cartSummary.style.display = 'block';
-                
-                // Atualizar valores
-                const subtotal = this.calcularSubtotal();
-                const desconto = this.calcularDesconto();
-                const total = this.calcularTotal();
-                
-                document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-                document.getElementById('total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-                
-                const discountLine = document.getElementById('discountLine');
-                if (this.cupomAplicado) {
-                    discountLine.style.display = 'flex';
-                    document.getElementById('discount').textContent = `- R$ ${desconto.toFixed(2).replace('.', ',')}`;
-                } else {
-                    discountLine.style.display = 'none';
-                }
-            }
-        },
-        
-        openCart() {
-            document.getElementById('cartModal').classList.add('active');
-            document.getElementById('cartOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        },
-        
-        closeCart() {
-            document.getElementById('cartModal').classList.remove('active');
-            document.getElementById('cartOverlay').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        },
-        
-        showNotification(message) {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: #4CAF50;
-                color: white;
-                padding: 15px 25px;
-                border-radius: 8px;
-                z-index: 2000;
-                font-weight: bold;
-                animation: slideIn 0.3s ease;
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
+                </div>
+            `).join('');
             
-            setTimeout(() => {
-                notification.remove();
-            }, 2000);
+            cupomArea.style.display = 'block';
+            cartSummary.style.display = 'block';
+            
+            const subtotal = this.calcularSubtotal();
+            const desconto = this.calcularDesconto();
+            const total = this.calcularTotal();
+            
+            document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById('total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+            
+            const discountLine = document.getElementById('discountLine');
+            if (this.cupomAplicado) {
+                discountLine.style.display = 'flex';
+                document.getElementById('discount').textContent = `- R$ ${desconto.toFixed(2).replace('.', ',')}`;
+            } else {
+                discountLine.style.display = 'none';
+            }
         }
-    };
-
-    // Inicializar carrinho quando a página carregar
-    document.addEventListener('DOMContentLoaded', () => {
-        cart.init();
+    },
+    
+    openCart() {
+        document.getElementById('cartModal').classList.add('active');
+        document.getElementById('cartOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    },
+    
+    closeCart() {
+        document.getElementById('cartModal').classList.remove('active');
+        document.getElementById('cartOverlay').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    },
+    
+    showNotification(message, color = '#4CAF50') {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${color};
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 2000;
+            font-weight: bold;
+            animation: slideIn 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
         
-        // Scroll suave para navegação
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            const linkText = link.textContent.trim();
-            
-            // Botão PRODUTOS - rola para a loja
-            if (linkText.includes('PRODUTOS')) {
-                link.href = '#loja';
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const lojaSection = document.querySelector('.loja-section');
-                    if (lojaSection) {
-                        lojaSection.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            }
-            
-            // Botão COMPETIÇÃO - rola para partidas
-            if (linkText.includes('COMPETI')) {
-                link.href = '#partidas';
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const partidasSection = document.querySelector('#btnpartidas');
-                    if (partidasSection) {
-                        partidasSection.parentElement.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                    }
-                });
-            }
-            
-            // Botão CONTATOS - rola para o rodapé
-            if (linkText.includes('CONTATOS')) {
-                link.href = '#footer';
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const footer = document.querySelector('footer');
-                    if (footer) {
-                        footer.scrollIntoView({ 
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            }
-        });
-    });
-  </script>
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+};
 
+// Inicializar quando a página carregar
+document.addEventListener('DOMContentLoaded', () => {
+    cart.init();
+    
+    // Scroll suave para navegação
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        const linkText = link.textContent.trim();
+        
+        if (linkText.includes('PRODUTOS')) {
+            link.href = '#loja';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lojaSection = document.querySelector('.loja-section');
+                if (lojaSection) {
+                    lojaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+        
+        if (linkText.includes('COMPETI')) {
+            link.href = '#partidas';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const partidasSection = document.querySelector('#btnpartidas');
+                if (partidasSection) {
+                    partidasSection.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        }
+        
+        if (linkText.includes('CONTATOS')) {
+            link.href = '#footer';
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const footer = document.querySelector('footer');
+                if (footer) {
+                    footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
+    });
+});
+</script>
 </body>
 
 </html>

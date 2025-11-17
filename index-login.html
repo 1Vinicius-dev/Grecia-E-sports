@@ -23,7 +23,6 @@
       color: white;
     }
 
-    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -38,10 +37,12 @@
       align-items: center;
       gap: 15px;
     }
+    
     .logo img {
-        width: 200px;
-        height: auto;
+      width: 200px;
+      height: auto;
     }
+    
     nav ul {
       display: flex;
       list-style: none;
@@ -61,7 +62,6 @@
       color: #AB7F32;
     }
 
-    /* Container Principal */
     .login-container {
       flex: 1;
       display: flex;
@@ -97,7 +97,6 @@
       color: #B3ADB1;
     }
 
-    /* Formulário */
     .form-group {
       margin-bottom: 25px;
     }
@@ -117,7 +116,7 @@
       background: rgba(255, 255, 255, 0.1);
       border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 10px;
-      color: #AB7F32;
+      color: white;
       font-size: 16px;
       font-family: 'Geologica', sans-serif;
       transition: all 0.3s;
@@ -169,7 +168,7 @@
     .login-btn {
       width: 100%;
       padding: 15px;
-      background: linear-gradient(135deg, #AB7F32 0%, #AB7F32 100%);
+      background: linear-gradient(135deg, #AB7F32 0%, #d4af37 100%);
       border: none;
       border-radius: 10px;
       color: #000346;
@@ -179,12 +178,6 @@
       cursor: pointer;
       transition: transform 0.3s, box-shadow 0.3s;
       font-family: 'Geologica', sans-serif;
-        
-    }
-
-    .enter{
-        text-decoration: none;
-        color: #000346;
     }
 
     .login-btn:hover {
@@ -219,49 +212,13 @@
       color: #AB7F32;
       font-size: 14px;
       padding: 0 15px;
-
-    }
-
-    .social-login {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .social-btn {
-      flex: 1;
-      padding: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      color: #B3ADB1;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .google-icon{
-        width: 20px;
-    }
-
-    .discord-icon{
-        width: 20px;
-    }
-
-    .social-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: #AB7F32;
     }
 
     .signup-link {
       text-align: center;
       font-size: 14px;
       color: #B3ADB1;
+      margin-top: 20px;
     }
 
     .signup-link a {
@@ -269,13 +226,13 @@
       text-decoration: none;
       font-weight: 600;
       transition: opacity 0.3s;
+      cursor: pointer;
     }
 
     .signup-link a:hover {
       opacity: 0.8;
     }
 
-    /* Footer */
     footer {
       background: #000346;
       padding: 20px;
@@ -288,15 +245,28 @@
       position: fixed;
       top: 20px;
       right: 20px;
-      background: linear-gradient(135deg, #AB7F32 0%, #AB7F32 100%);
-      color: white;
       padding: 15px 25px;
       border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
       font-weight: 600;
       z-index: 1000;
       animation: slideIn 0.3s ease;
       display: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .notification.success {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .notification.error {
+      background: #f44336;
+      color: white;
+    }
+
+    .notification.info {
+      background: #AB7F32;
+      color: white;
     }
 
     @keyframes slideIn {
@@ -310,14 +280,31 @@
       }
     }
 
+    .demo-info {
+      background: rgba(171, 127, 50, 0.1);
+      border: 2px solid #AB7F32;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      color: #B3ADB1;
+      font-size: 13px;
+    }
+
+    .demo-info strong {
+      color: #AB7F32;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .demo-credentials {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 8px;
+    }
+
     @media (max-width: 768px) {
-       body {
-        background: url(imagens/telalogin.png) no-repeat center bottom;
-        background-size: cover;
-        background-attachment: fixed;
-       }
-      
-        header {
+      header {
         padding: 20px;
         flex-direction: column;
         gap: 20px;
@@ -332,11 +319,6 @@
       .login-box {
         padding: 40px 25px;
       }
-
-      .social-login {
-        flex-direction: column;
-      }
-      
     }
   </style>
 </head>
@@ -345,14 +327,14 @@
 
   <header>
     <div class="logo">
-     <img src="imagens/Logo-deitada.png" alt="">
+      <img src="imagens/Logo-deitada.png" alt="Grécia E-Sports">
     </div>
     <nav>
       <ul>
         <li><a href="index1.html">INÍCIO</a></li>
-        <li><a href="#">PRODUTOS</a></li>
-        <li><a href="#">TIMES</a></li>
-        <li><a href="#">CONTATOS</a></li>
+        <li><a href="index1.html#loja">PRODUTOS</a></li>
+        <li><a href="index2.html">TIMES</a></li>
+        <li><a href="index1.html#footer">CONTATOS</a></li>
       </ul>
     </nav>
   </header>
@@ -360,11 +342,26 @@
   <div class="login-container">
     <div class="login-box">
       <div class="login-title">
-        <h2>BEM-VINDO</h2>
-        <p>Faça login para continuar</p>
+        <h2 id="formTitle">BEM-VINDO</h2>
+        <p id="formSubtitle">Faça login para continuar</p>
       </div>
 
+      <!-- Informações de demonstração -->
+      <div class="demo-info" id="demoInfo">
+        <strong>🎮 CONTAS DE DEMONSTRAÇÃO:</strong>
+        <div class="demo-credentials">
+          <span>📧 admin@grecia.com | 🔑 admin123</span>
+          <span>📧 joao@example.com | 🔑 123456</span>
+        </div>
+      </div>
+
+      <!-- Formulário de Login -->
       <form id="loginForm">
+        <div class="form-group" id="nameGroup" style="display: none;">
+          <label for="name">NOME COMPLETO</label>
+          <input type="text" id="name" placeholder="Seu nome completo">
+        </div>
+
         <div class="form-group">
           <label for="email">E-MAIL</label>
           <input type="email" id="email" placeholder="seu@email.com" required>
@@ -375,7 +372,12 @@
           <input type="password" id="password" placeholder="••••••••" required>
         </div>
 
-        <div class="form-options">
+        <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+          <label for="confirmPassword">CONFIRMAR SENHA</label>
+          <input type="password" id="confirmPassword" placeholder="••••••••">
+        </div>
+
+        <div class="form-options" id="loginOptions">
           <label class="remember-me">
             <input type="checkbox" id="remember">
             <span>Lembrar-me</span>
@@ -383,24 +385,16 @@
           <a href="#" class="forgot-password">Esqueceu a senha?</a>
         </div>
 
-        <button type="submit" class="login-btn"><a href="index1.html" class="enter">ENTRAR</a></button>
+        <button type="submit" class="login-btn" id="submitBtn">ENTRAR</button>
       </form>
 
       <div class="divider">
         <span>OU</span>
       </div>
 
-      <div class="social-login">
-        <button class="social-btn" onclick="loginSocial('Google')">
-           <img src="imagens/Google.png" class="google-icon" alt=""><span>Google</span>
-        </button>
-        <button class="social-btn" onclick="loginSocial('Discord')">
-           <img src="imagens/Discord.png" class="discord-icon" alt=""><span>Discord</span>
-        </button>
-      </div>
-
       <div class="signup-link">
-        Não tem uma conta? <a href="#">Cadastre-se</a>
+        <span id="toggleText">Não tem uma conta?</span>
+        <a href="#" id="toggleForm">Cadastre-se</a>
       </div>
     </div>
   </div>
@@ -410,11 +404,100 @@
   </footer>
 
   <script>
-    const loginForm = document.getElementById('loginForm');
-    const notification = document.getElementById('notification');
+    // Sistema de Autenticação
+    const AuthSystem = {
+        users: [
+            { id: 1, name: "João Silva", email: "joao@example.com", password: "123456" },
+            { id: 2, name: "Maria Santos", email: "maria@example.com", password: "senha123" },
+            { id: 3, name: "Admin", email: "admin@grecia.com", password: "admin123" }
+        ],
 
-    function showNotification(message, duration = 3000) {
+        init() {
+            const saved = localStorage.getItem('greciaUsers');
+            if (saved) {
+                this.users = JSON.parse(saved);
+            } else {
+                this.saveUsers();
+            }
+        },
+
+        saveUsers() {
+            localStorage.setItem('greciaUsers', JSON.stringify(this.users));
+        },
+
+        register(name, email, password) {
+            if (this.users.find(u => u.email === email)) {
+                return { success: false, message: 'Este e-mail já está cadastrado!' };
+            }
+
+            const newUser = {
+                id: this.users.length + 1,
+                name: name,
+                email: email,
+                password: password
+            };
+
+            this.users.push(newUser);
+            this.saveUsers();
+
+            return { success: true, message: 'Cadastro realizado com sucesso!' };
+        },
+
+        login(email, password, remember = false) {
+            const user = this.users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                const sessionData = {
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    loginTime: new Date().toISOString()
+                };
+
+                sessionStorage.setItem('greciaUser', JSON.stringify(sessionData));
+
+                if (remember) {
+                    localStorage.setItem('greciaUserRemember', JSON.stringify(sessionData));
+                }
+
+                return { success: true, message: 'Login realizado com sucesso!', user: sessionData };
+            }
+
+            return { success: false, message: 'E-mail ou senha incorretos!' };
+        },
+
+        isLoggedIn() {
+            const sessionUser = sessionStorage.getItem('greciaUser');
+            const rememberUser = localStorage.getItem('greciaUserRemember');
+
+            if (sessionUser) return JSON.parse(sessionUser);
+            if (rememberUser) {
+                const user = JSON.parse(rememberUser);
+                sessionStorage.setItem('greciaUser', JSON.stringify(user));
+                return user;
+            }
+            return null;
+        }
+    };
+
+    // Interface
+    const notification = document.getElementById('notification');
+    const loginForm = document.getElementById('loginForm');
+    const toggleForm = document.getElementById('toggleForm');
+    const formTitle = document.getElementById('formTitle');
+    const formSubtitle = document.getElementById('formSubtitle');
+    const submitBtn = document.getElementById('submitBtn');
+    const nameGroup = document.getElementById('nameGroup');
+    const confirmPasswordGroup = document.getElementById('confirmPasswordGroup');
+    const loginOptions = document.getElementById('loginOptions');
+    const toggleText = document.getElementById('toggleText');
+    const demoInfo = document.getElementById('demoInfo');
+
+    let isLoginMode = true;
+
+    function showNotification(message, type = 'info', duration = 3000) {
       notification.textContent = message;
+      notification.className = `notification ${type}`;
       notification.style.display = 'block';
       
       setTimeout(() => {
@@ -422,30 +505,105 @@
       }, duration);
     }
 
+    // Alternar entre login e cadastro
+    toggleForm.addEventListener('click', (e) => {
+      e.preventDefault();
+      isLoginMode = !isLoginMode;
+
+      if (isLoginMode) {
+        formTitle.textContent = 'BEM-VINDO';
+        formSubtitle.textContent = 'Faça login para continuar';
+        submitBtn.textContent = 'ENTRAR';
+        toggleText.textContent = 'Não tem uma conta?';
+        toggleForm.textContent = 'Cadastre-se';
+        nameGroup.style.display = 'none';
+        confirmPasswordGroup.style.display = 'none';
+        loginOptions.style.display = 'flex';
+        demoInfo.style.display = 'block';
+      } else {
+        formTitle.textContent = 'CRIAR CONTA';
+        formSubtitle.textContent = 'Cadastre-se para começar';
+        submitBtn.textContent = 'CADASTRAR';
+        toggleText.textContent = 'Já tem uma conta?';
+        toggleForm.textContent = 'Fazer login';
+        nameGroup.style.display = 'block';
+        confirmPasswordGroup.style.display = 'block';
+        loginOptions.style.display = 'none';
+        demoInfo.style.display = 'none';
+      }
+
+      loginForm.reset();
+    });
+
+    // Processar formulário
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
-      const remember = document.getElementById('remember').checked;
 
-      // Simulação de login
-      showNotification('✓ Login realizado com sucesso!');
-      
-      // Aqui você adicionaria a lógica real de autenticação
+      if (isLoginMode) {
+        // LOGIN
+        const remember = document.getElementById('remember').checked;
+        const result = AuthSystem.login(email, password, remember);
+
+        if (result.success) {
+          showNotification(result.message, 'success');
+          
+          setTimeout(() => {
+            const redirectUrl = localStorage.getItem('greciaRedirectUrl') || 'index1.html';
+            localStorage.removeItem('greciaRedirectUrl');
+            window.location.href = redirectUrl;
+          }, 1500);
+        } else {
+          showNotification(result.message, 'error');
+        }
+      } else {
+        // CADASTRO
+        const name = document.getElementById('name').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (!name) {
+          showNotification('Por favor, preencha seu nome completo!', 'error');
+          return;
+        }
+
+        if (password !== confirmPassword) {
+          showNotification('As senhas não coincidem!', 'error');
+          return;
+        }
+
+        if (password.length < 6) {
+          showNotification('A senha deve ter no mínimo 6 caracteres!', 'error');
+          return;
+        }
+
+        const result = AuthSystem.register(name, email, password);
+
+        if (result.success) {
+          showNotification(result.message, 'success');
+          
+          setTimeout(() => {
+            // Auto-login após cadastro
+            AuthSystem.login(email, password, false);
+            window.location.href = 'index1.html';
+          }, 1500);
+        } else {
+          showNotification(result.message, 'error');
+        }
+      }
+    });
+
+    // Inicializar sistema
+    AuthSystem.init();
+
+    // Verificar se já está logado
+    if (AuthSystem.isLoggedIn()) {
+      showNotification('Você já está logado! Redirecionando...', 'info');
       setTimeout(() => {
-        // window.location.href = 'index1.html';
+        window.location.href = 'index1.html';
       }, 1500);
-    });
-
-    function loginSocial(platform) {
-      showNotification(`Login com ${platform} em desenvolvimento...`);
     }
-
-    // Animação de entrada suave
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelector('.login-box').style.animation = 'slideIn 0.5s ease';
-    });
   </script>
 </body>
 </html>

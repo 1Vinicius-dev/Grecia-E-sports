@@ -267,6 +267,17 @@ button:hover {
 }
 
 /* Seção de Partidas */
+#video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin: 40px auto;
+    
+}
+
 .wrapper img.wrapper {
     width: 100%;
     max-width: 100%;
