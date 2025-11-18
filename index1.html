@@ -81,9 +81,10 @@
     </div>
     <div id="modal">
       <img id="valorant" src="imagens/VALORANT.png" alt="">
-      <img id="embreve1" src="imagens/embreve1.png" alt="">
-      <img id="embreve2" src="imagens/embreve1.png" alt="">
+      <img id="embreve1" src="imagens/fortnite.png" alt="">
+      <img id="embreve2" src="/imagens/rocket league.png" alt="">
     </div>
+    <button id="btn-ver-mais-jogos" onclick="window.location.href='jogo.html'">VER MAIS SOBRE OS JOGOS</button>
   </div>
   
   <div class="wrapper">
@@ -91,8 +92,8 @@
       <h1>PARTIDAS</h1>
     </div>
     <video id="video" src="./gameplay.mp4" muted autoplay loop controls></video>
-    <img src="imagens/partidas.png" alt="" class="wrapper">
-    <button id="btnpartidas">ASSISTA AS PARTIDAS</button>
+    
+    
   </div>
 
   <div class="wrapper loja-section">
@@ -539,10 +540,10 @@ const cart = {
             document.getElementById('cupomInputGroup').style.display = 'none';
             document.getElementById('cupomAplicado').style.display = 'flex';
             document.getElementById('cupomAplicado').innerHTML = `
-                <span>${cupom.toUpperCase()} - 10% OFF ✔</span>
+                <span>${cupom.toUpperCase()} - 10% OFF ✓</span>
                 <button class="cupom-remove" onclick="cart.removerCupom()">×</button>
             `;
-            msgEl.textContent = '✔ Cupom aplicado com sucesso!';
+            msgEl.textContent = '✓ Cupom aplicado com sucesso!';
             msgEl.className = 'cupom-msg success';
             this.updateUI();
         } else {

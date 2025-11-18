@@ -25,7 +25,7 @@
 
     header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 30px 50px;
       background: #000346;
@@ -41,25 +41,6 @@
     .logo img {
       width: 200px;
       height: auto;
-    }
-    
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 30px;
-    }
-
-    nav a {
-      color: #B3ADB1;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 14px;
-      letter-spacing: 1px;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #AB7F32;
     }
 
     .login-container {
@@ -233,6 +214,23 @@
       opacity: 0.8;
     }
 
+    .back-to-site {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-to-site a {
+      color: #AB7F32;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+
+    .back-to-site a:hover {
+      opacity: 0.8;
+    }
+
     footer {
       background: #000346;
       padding: 20px;
@@ -306,18 +304,14 @@
     @media (max-width: 768px) {
       header {
         padding: 20px;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      nav ul {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
       }
 
       .login-box {
         padding: 40px 25px;
+      }
+
+      .logo img {
+        width: 150px;
       }
     }
   </style>
@@ -329,14 +323,6 @@
     <div class="logo">
       <img src="imagens/Logo-deitada.png" alt="Grécia E-Sports">
     </div>
-    <nav>
-      <ul>
-        <li><a href="index1.html">INÍCIO</a></li>
-        <li><a href="index1.html#loja">PRODUTOS</a></li>
-        <li><a href="index2.html">TIMES</a></li>
-        <li><a href="index1.html#footer">CONTATOS</a></li>
-      </ul>
-    </nav>
   </header>
 
   <div class="login-container">
@@ -395,6 +381,10 @@
       <div class="signup-link">
         <span id="toggleText">Não tem uma conta?</span>
         <a href="#" id="toggleForm">Cadastre-se</a>
+      </div>
+
+      <div class="back-to-site">
+        <a href="index1.html">← Voltar para o site</a>
       </div>
     </div>
   </div>
